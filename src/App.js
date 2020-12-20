@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ListItems from './ListItems';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class App extends Component {
     }
     this.addItem = this.addItem.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.deleteItem=this.deleteItem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
   addItem(e) {
     e.preventDefault();
@@ -38,18 +40,18 @@ class App extends Component {
       }
     })
   }
-  deleteItem(key){
-    const filteredItems=this.state.items.filter(item =>
-      item.key!==key);
-      this.setState({
-        items:filteredItems
-      })
+  deleteItem(key) {
+    const filteredItems = this.state.items.filter(item =>
+      item.key !== key);
+    this.setState({
+      items: filteredItems
+    })
   }
   render() {
     return (
-      <div>
+      <div className='App'>
         <header>
-          <h1>todo list here</h1>
+          <h1>Todo list here</h1>
           <form id="todolist" onSubmit={this.addItem}>
             <input type="text" placeholder="enter task"
               value={this.state.currentItem.text}
@@ -57,11 +59,11 @@ class App extends Component {
             </input>
             <button type="submit">add</button>
           </form>
-        </header>
-        <ListItems
-          items={this.state.items}
-          deleteItem={this.deleteItem}></ListItems>
-      </div >
+          <ListItems
+            items={this.state.items}
+            deleteItem={this.deleteItem}></ListItems>
+      </header>
+      </div>
     );
   }
 }
